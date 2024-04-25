@@ -1,6 +1,121 @@
-/******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+
+.siteName {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+nav ul {
+  background-color: #4b4b4b;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  margin: 10px;
+  color: #fdfdfd;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+
+.hero-container {
+  position: relative;
+}
+
+.hero-title {
+  margin-top: 20px;
+}
+
+.container {
+  position: absolute;
+  top: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+  text-align: left;
+}
+.container p {
+  margin: 0;
+}
+.container button {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #1b1b1b;
+  color: #fbfbfb;
+}
+
+.description-car {
+  padding: 10px;
+}
+
+.description-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.description-list li {
+  padding-bottom: 10px;
+}
+
+.gallery {
+  padding: 20px;
+}
+
+.gallery h3 {
+  text-align: center;
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.gallery-item {
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.image {
+  background-color: #c0c0c0;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+footer {
+  padding-bottom: 10px;
+}
+
