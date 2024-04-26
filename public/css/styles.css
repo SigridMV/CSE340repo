@@ -57,7 +57,9 @@ nav ul li a {
   padding: 5px;
   border-radius: 5px;
   text-align: left;
+  color: #1b1b1b;
 }
+
 .container p {
   margin: 0;
 }
@@ -138,9 +140,7 @@ footer {
   
 }
 
-.container{
-  color: #1b1b1b;
-}
+
 
 .hero-btn{
   cursor: pointer;
