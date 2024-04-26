@@ -6,6 +6,7 @@
   padding: 0;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -22,6 +23,7 @@ header a {
   font-weight: bold;
 }
 
+/* Navigation */
 nav ul {
   background-color: #4b4b4b;
   list-style-type: none;
@@ -42,6 +44,7 @@ nav ul li a {
   text-decoration: none;
 }
 
+/* Hero */
 .hero-container {
   position: relative;
 }
@@ -50,6 +53,7 @@ nav ul li a {
   margin-top: 20px;
 }
 
+/* Container */
 .container {
   position: absolute;
   top: 50px;
@@ -125,6 +129,7 @@ nav ul li a {
   color: blue;
 }
 
+/* Footer */
 footer {
   padding-bottom: 10px;
 }
