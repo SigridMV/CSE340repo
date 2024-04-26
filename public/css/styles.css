@@ -29,11 +29,13 @@ nav ul {
   margin: 0;
   display: flex;
   justify-content: space-around;
+  
 }
 
 nav ul li {
   margin: 10px;
   color: #fdfdfd;
+  cursor: pointer;
 }
 
 nav ul li a {
@@ -79,6 +81,11 @@ nav ul li a {
   padding-bottom: 10px;
 }
 
+.description-section{
+  padding-top: 50px;
+  padding-left: 5px;
+}
+
 .gallery {
   padding: 20px;
 }
@@ -113,9 +120,102 @@ nav ul li a {
   margin-top: 10px;
   text-decoration: underline;
   cursor: pointer;
+  color: blue;
 }
 
 footer {
   padding-bottom: 10px;
 }
 
+#wrapper {
+  max-width: 900px;
+  min-width: 500px;
+}
+
+.dmc{
+  font-weight: bold;
+  font-size: 20px;
+  
+}
+
+.container{
+  color: #1b1b1b;
+}
+
+.hero-btn{
+  cursor: pointer;
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .column {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .gallery {
+    order: 1; 
+  }
+
+  .description-section {
+    order: 2; 
+    margin-left: 20px; 
+    padding-top: 20px;
+  }
+
+  .gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .description-list li{
+    margin-top: 5px;
+    padding-bottom: 36px;
+  }
+
+  .gallery-title{
+    padding-bottom: 20px;
+  }
+
+  nav{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .hero-title{
+    padding-left: 10px;
+  }
+
+  .hero-container{
+    padding-left: 70px;
+    padding-bottom: 20px;
+  }
+
+  .image img {
+    max-width: 100%; /* Ajusta el tamaño máximo de las imágenes */
+    height: auto;
+  }
+
+  #wrapper {
+    z-index: 1;
+    background-color: #fbfbfb;
+    border: 4px solid cyan;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+
+  .container-page {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .background {
+    background-image: url(/images/site/checkerboard.jpg);
+    width: 100%;
+    z-index: -1;
+  }
+}
