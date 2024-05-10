@@ -35,6 +35,8 @@ nav ul {
   flex-wrap: wrap;
 }
 
+
+
 nav ul li {
   margin: 10px;
   color: #fdfdfd;
@@ -43,7 +45,10 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
+  color: #fdfdfd;
 }
+
+
 
 /* Hero */
 .hero-container {
