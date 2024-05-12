@@ -1,5 +1,6 @@
-<% if (title) { %>
-<h1><%= title %></h1>
-<% } else { res.redirect('/') } %> 
-<%# messages() %>
-<%- grid %>
+<div class="classification-pages">  
+  <% if (title) { %>
+  <h1 class="classification-title"><%= title %></h1>
+  <% } else { res.redirect('/') } %> <%# messages() %> 
+  <div class = "classification-grid"><%- grid %></div>
+</div>

@@ -8,11 +8,14 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
-const app = express();
+const router = express.Router();
 const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const utilities = require('./utilities');
+const errorController = require('./controllers/errorController');
+
+const app = express();
 
 app.set("view engine", "ejs");
 app.use(expressLayouts);
@@ -29,6 +32,10 @@ app.get("/", baseController.buildHome);
 // Inventory routes
 app.use("/inv", inventoryRoute);
 
+// Route to trigger intentional error
+router.get('/error-link', errorController.triggerError);
+app.use('/error', router); 
+
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
@@ -38,13 +45,14 @@ app.use(async (req, res, next) => {
  * Express Error Handler
  * Place after all other middleware
  *************************/
+// Express Error Handler Middleware
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav();
   console.error(`Error at: "${req.originalUrl}": ${err.message}`);
   res.render("errors/error", {
-    title: err.status || "Server Error",
-    message: err.message,
-    nav,
+      title: err.status || "Server Error",
+      message: err.message,
+      nav,
   });
 });
 

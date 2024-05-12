@@ -1,7 +1,11 @@
 <% if (title) { %>
-    <h1> <%= title %> </h1>
-    <% } else { 
-        res.redirect('/') 
-    } %>
+<h1 class="error-title"><%= title %></h1>
+<% } else { res.redirect('/error-link') } %>
 
-<%- message %>
+<p class="error-message"><strong><%- message %></strong></p>
+<% if (title === 'Server Error') { %>
+    <img class="error-img" src="/images/site/error.jpg" alt="server error" />
+<% } else { %>
+    <img class="error-img" src="/images/site/error.avif" alt="error" />
+<% } %>
+

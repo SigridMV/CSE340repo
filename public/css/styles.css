@@ -35,7 +35,11 @@ nav ul {
   flex-wrap: wrap;
 }
 
-
+.nav-pages {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
 nav ul li {
   margin: 10px;
@@ -47,8 +51,6 @@ nav ul li a {
   text-decoration: none;
   color: #fdfdfd;
 }
-
-
 
 /* Hero */
 .hero-container {
@@ -93,7 +95,7 @@ nav ul li a {
   padding-bottom: 10px;
 }
 
-.description-section{
+.description-section {
   padding-top: 50px;
   padding-left: 5px;
 }
@@ -145,23 +147,102 @@ footer {
   min-width: 300px;
 }
 
-.dmc{
+.dmc {
   font-weight: bold;
   font-size: 20px;
-  
 }
 
-
-
-.hero-btn{
+.hero-btn {
   cursor: pointer;
 }
 
-.hero-container img{
- width: 100%;
+.hero-container img {
+  width: 100%;
 }
 
+.classification-title {
+  padding-top: 20px;
+  padding-left: 10px;
+}
 
+.namePrice {
+  text-align: center;
+}
+
+.namePrice h2 {
+  font-size: 20px;
+  color: #333;
+  padding-bottom: 10px;
+}
+
+.namePrice span {
+  font-size: 16px;
+  color: #666;
+}
+
+#inv-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#vehicles-cards {
+  max-width: 400px;
+  border: 1px solid #1b1b1b;
+  padding: 20px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#vehicles-cards img {
+  border-radius: 10px;
+}
+
+.error-title{
+  margin: 20px;
+}
+
+.error-img{
+  width: 100%;
+}
+
+.error-message{
+  padding: 10px;
+  text-align: center;
+}
+
+.inventory-title{
+  padding: 20px;
+}
+
+.vehicle-cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+.vehicle-details {
+  list-style-type: none;
+  margin: 20px;
+  padding-bottom: 20px;
+}
+
+.detail-cont{
+  padding: 20px;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.list-space{
+  padding-top: 20px;
+}
 
 @media screen and (min-width: 768px) {
   .column {
@@ -170,12 +251,12 @@ footer {
   }
 
   .gallery {
-    order: 1; 
+    order: 1;
   }
 
   .description-section {
-    order: 2; 
-    margin-left: 20px; 
+    order: 2;
+    margin-left: 20px;
     padding-top: 20px;
   }
 
@@ -184,25 +265,25 @@ footer {
     flex-wrap: wrap;
     justify-content: space-around;
   }
-  .description-list li{
+  .description-list li {
     margin-top: 5px;
     padding-bottom: 36px;
   }
 
-  .gallery-title{
+  .gallery-title {
     padding-bottom: 20px;
   }
 
-  nav{
+  nav {
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  .hero-title{
+  .hero-title {
     padding-left: 10px;
   }
 
-  .hero-container{
+  .hero-container {
     padding-left: 70px;
     padding-bottom: 20px;
   }
@@ -218,19 +299,39 @@ footer {
     border: 4px solid cyan;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-  }
-
-  .container-page {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .background {
-    background-image: url(/images/site/checkerboard.jpg);
     width: 100%;
-    z-index: -1;
   }
+
+
+.container-page {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  background-image: url(/images/site/checkerboard.jpg);
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#vehicles-cards {
+  flex: 0 0 calc(33.33% - 40px);
+  border: 1px solid #1b1b1b;
+  padding: 20px;
+  margin: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
 }
