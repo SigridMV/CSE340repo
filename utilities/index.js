@@ -95,7 +95,7 @@ Util.buildModelGrid = async function (data) {
   const vehicle = data[0];
   let grid = '<section class="vehicle-cont">';
   grid +=
-    '<img src="' +
+    '<img class="vehicle-imagen" src="' +
     vehicle.inv_image +
     '" alt="Image of ' +
     vehicle.inv_make +

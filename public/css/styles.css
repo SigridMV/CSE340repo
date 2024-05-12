@@ -218,17 +218,20 @@ footer {
 }
 
 .vehicle-cont{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
-  margin-bottom: 30px;
+  max-width: 900px;
+  min-width: 300px;
+  
+}
+
+.vehicle-imagen{
+  width: 100%;
 }
 
 .vehicle-details {
   list-style-type: none;
   margin: 20px;
   padding-bottom: 20px;
+  
 }
 
 .detail-cont{
@@ -333,5 +336,13 @@ footer {
   margin: 20px;
   box-sizing: border-box;
   border-radius: 10px;
+}
+
+.vehicle-cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 30px;
 }
 }
