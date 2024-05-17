@@ -63,6 +63,7 @@ app.use("/inv", utilities.handleErrors(require("./routes/inventoryRoute")))
 
 app.use("/account", require("./routes/accountRoute"));
 
+
 // Route to trigger intentional error
 router.get("/error-link", errorController.triggerError);
 app.use("/error", router);
