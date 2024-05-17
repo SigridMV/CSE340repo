@@ -111,24 +111,24 @@ Util.buildModelGrid = async function (data) {
     '<span class="bold">Price: </span>' +
     '<span class="bold">$' +
     new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
-    '</span>' +
+    "</span>" +
     "</li>";
   grid +=
-    '<li class="list-space">'  +
+    '<li class="list-space">' +
     '<span class="bold">' +
     "Description: " +
     "</span>" +
     vehicle.inv_description +
     "</li>";
   grid +=
-  '<li class="list-space">' +
+    '<li class="list-space">' +
     '<span class="bold">' +
     "Color: " +
     "</span>" +
     vehicle.inv_color +
     "</li>";
   grid +=
-  '<li class="list-space">' +
+    '<li class="list-space">' +
     '<span class="bold">' +
     "Miles: " +
     "</span>" +
@@ -139,5 +139,8 @@ Util.buildModelGrid = async function (data) {
   grid += "</section>";
   return grid;
 };
+
+Util.handleErrors = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch(next);
 
 module.exports = Util;
