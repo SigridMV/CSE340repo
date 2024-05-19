@@ -245,7 +245,7 @@ footer {
   padding-top: 20px;
 }
 
-#messages{
+#messages, .notice{
   padding-top: 15px;
   padding-bottom: 15px;
   color: red;
@@ -358,6 +358,31 @@ input[type="text"]:focus {
   margin-top: 5px;
   padding-left: 10px;
   font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.management-title{
+  padding: 20px;
+}
+
+.management {
+ margin-bottom: 40px;
+}
+
+.management a{
+  margin-left: 50px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.new{
+  margin-left: 30px;
+  border: 1px solid #1b1b1b;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.new h3{
   margin-bottom: 10px;
 }
 
