@@ -59,7 +59,8 @@ app.use(static);
 app.get("/", utilities.handleErrors(baseController.buildHome));
 
 // Inventory routes
-app.use("/inv", utilities.handleErrors(require("./routes/inventoryRoute")))
+
+app.use("/inv", inventoryRoute);
 
 app.use("/account", require("./routes/accountRoute"));
 
