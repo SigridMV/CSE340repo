@@ -318,7 +318,7 @@ input[type="text"]:focus {
 }
 
 .form-btn {
-  background-color: #007bff;
+  background-color: #0056b3;
   color: #ffffff;
   padding: 10px;
   border: none;
@@ -329,7 +329,7 @@ input[type="text"]:focus {
 }
 
 .form-btn:hover {
-  background-color: #0056b3;
+  background-color: #004494;
 }
 
 .register {
