@@ -62,8 +62,14 @@ async function addClassification(add_classification) {
     const sql = "INSERT INTO classification (classification_name) VALUES ($1)";
     return await pool.query(sql, [add_classification]);
   } catch (error) {
-    return error.message;
+    return console.log(error.message);
   }
+}
+
+async function getClassificationsById() {
+  return await pool.query(
+    "SELECT * FROM public.classification ORDER BY classification_name"
+  );
 }
 
 async function checkExistingClassification(add_classification) {
@@ -114,6 +120,7 @@ module.exports = {
   getInventoryByClassificationId,
   getModelById,
   addClassification,
+  getClassificationsById,
   checkExistingClassification,
-  addInventory
+  addInventory,
 };

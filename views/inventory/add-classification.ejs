@@ -11,7 +11,8 @@
 <div class="form-box new">
   <form action="/inv/add-classification" method="post">
     <div class="inv-label">
-        <h3><i>Field is required</i></h3>
+      <h3><i>Field is required</i></h3>
+      <hr>
       <label for="classification_name"><h3>Classification Name:</h3></label>
       <p>Name must be alphabetic characters only.</p>
       <input
@@ -23,8 +24,9 @@
         value="<%= locals.add_classification %>"
         pattern="[a-zA-Z]*"
       />
+      <button type="submit" class="form-btn">Add Classification</button>
     </div>
-
-    <button type="submit" class="form-btn">Add Classification</button>
   </form>
 </div>
+
+
