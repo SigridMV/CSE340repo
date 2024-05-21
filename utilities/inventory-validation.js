@@ -14,11 +14,12 @@ validate.classificationRules = () => {
       .matches(/^[^\s]+$/, "g")
       .withMessage("Provide a correct classification name")
       .custom(async (add_classification) => {
-        const classificationExists =
-          await invModel.checkExistingClassification(add_classification);
+        const classificationExists = await invModel.checkExistingClassification(
+          add_classification
+        );
         if (classificationExists) {
           throw new Error(
-            "Classification with that name already exists. Please try different name.",
+            "Classification with that name already exists. Please try different name."
           );
         }
       }),
@@ -30,9 +31,14 @@ validate.classificationRules = () => {
  * ***************************** */
 validate.inventoryRules = () => {
   return [
+    body("classification_id")
+      .trim()
+      .notEmpty()
+      .withMessage("Select a classification"),
     // vehicle make
     body("inv_make")
       .trim()
+      .escape()
       .isLength({ min: 3 })
       .withMessage("Please enter a valid vehicle make."),
     // vehicle model
@@ -40,11 +46,6 @@ validate.inventoryRules = () => {
       .trim()
       .isLength({ min: 3 })
       .withMessage("Please enter a valid vehicle model."),
-    // vehicle year
-    body("inv_year")
-      .trim()
-      .isLength({ max: 4, min: 4 })
-      .withMessage("Please enter a valid vehicle year."),
     // vehicle description
     body("inv_description")
       .trim()
@@ -53,11 +54,13 @@ validate.inventoryRules = () => {
     // vehicle image
     body("inv_image")
       .trim()
+      .notEmpty()
       .isLength({ min: 3 })
       .withMessage("Please enter a valid vehicle image."),
     // vehicle thumbnail
     body("inv_thumbnail")
       .trim()
+      .notEmpty()
       .isLength({ min: 3 })
       .withMessage("Please enter a valid vehicle thumbnail."),
     // vehicle price
@@ -65,10 +68,16 @@ validate.inventoryRules = () => {
       .trim()
       .isLength({ min: 1 })
       .withMessage("Please enter a valid vehicle price."),
+    // vehicle year
+    body("inv_year")
+      .trim()
+      .isLength({ max: 4, min: 4 })
+      .withMessage("Please enter a valid vehicle year."),
     // vehicle mileage
     body("inv_miles")
       .trim()
-      .isLength({ min: 1 })
+      .isNumeric()
+      .matches(/^\d+$/)
       .withMessage("Please enter a valid vehicle miles."),
     // vehicle color
     body("inv_color")
@@ -91,7 +100,7 @@ validate.checkClassificationData = async (req, res, next) => {
       errors,
       title: "Add Classification",
       nav,
-      add_classification,
+      classification_id,
     });
     return;
   }
@@ -103,6 +112,7 @@ validate.checkClassificationData = async (req, res, next) => {
  * ********************************************************** */
 validate.checkInventoryData = async (req, res, next) => {
   const {
+    add_classification,
     inv_make,
     inv_model,
     inv_year,
@@ -124,6 +134,7 @@ validate.checkInventoryData = async (req, res, next) => {
       title: "Add Inventory",
       nav,
       selectList,
+      classification_id,
       inv_make,
       inv_model,
       inv_year,

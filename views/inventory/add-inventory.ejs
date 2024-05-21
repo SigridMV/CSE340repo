@@ -1,12 +1,6 @@
 <% if (title) { %>
 <h1 class="inventory-title"><%= title %></h1>
-<% } else { res.redirect('/') } %>
-
-<!-- Display Messages -->
-<%- messages() %>
-
-<!-- Add-Inventory Error Display -->
-<% if (errors) { %>
+<% } else { res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
 <ul class="notice">
   <% errors.array().forEach(error => { %>
   <li><%= error.msg %></li>
@@ -32,7 +26,6 @@
         name="inv_make"
         type="text"
         placeholder="Min of 3 characters"
-        required
         value="<%= locals.inv_make %>"
       />
     </div>
@@ -43,13 +36,17 @@
         name="inv_model"
         type="text"
         placeholder="Min of 3 characters"
-        required
         value="<%= locals.inv_model %>"
       />
     </div>
     <div class="inv-label">
       <label for="description">Description </label>
-      <textarea id="description" name="inv_description"  class="large-textarea" placeholder="" required >
+      <textarea
+        id="description"
+        name="inv_description"
+        class="large-textarea"
+        placeholder=""
+      >
 <%= locals.inv_description %></textarea
       >
     </div>
@@ -60,7 +57,6 @@
         name="inv_image"
         type="text"
         placeholder="Image"
-        required
         value="/images/vehicles/no-image.png"
       />
     </div>
@@ -71,8 +67,7 @@
         name="inv_thumbnail"
         type="text"
         placeholder="Thumbnail Image"
-        required
-        value="/images/vehicles/no-image-th.png"
+        value="/images/vehicles/no-image.png"
       />
     </div>
     <div class="inv-label">
@@ -82,8 +77,6 @@
         name="inv_price"
         type="number"
         placeholder="decimal or integer"
-        required
-        min="0"
         value="<%= locals.inv_price %>"
       />
     </div>
@@ -94,8 +87,6 @@
         name="inv_year"
         type="number"
         placeholder="4-digit year"
-        required
-        min="0"
         value="<%= locals.inv_year %>"
       />
     </div>
@@ -106,8 +97,6 @@
         name="inv_miles"
         type="number"
         placeholder="digits only"
-        required
-        min="0"
         value="<%= locals.inv_miles %>"
       />
     </div>
@@ -118,7 +107,6 @@
         name="inv_color"
         type="text"
         placeholder=""
-        required
         value="<%= locals.inv_color %>"
       />
     </div>
@@ -126,3 +114,44 @@
     <button type="submit" class="form-btn">Add Vehicle</button>
   </form>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const inputs = form.querySelectorAll("input, textarea");
+
+    inputs.forEach(input => {
+      input.addEventListener("input", function () {
+        validateInput(input);
+      });
+    });
+
+    function validateInput(input) {
+      let isValid = false;
+
+      if (input.name === "inv_make" || input.name === "inv_model") {
+        isValid = input.value.length >= 3;
+      } else if (input.name === "inv_year") {
+        isValid = /^\d{4}$/.test(input.value);
+      } else if (input.name === "inv_description") {
+        isValid = input.value.length >= 1 && input.value.length <= 150;
+      } else if (input.name === "inv_image" || input.name === "inv_thumbnail") {
+        isValid = input.value.length >= 3;
+      } else if (input.name === "inv_price") {
+        isValid = !isNaN(input.value) && input.value.length >= 1;
+      } else if (input.name === "inv_miles") {
+        isValid = /^\d+$/.test(input.value);
+      } else if (input.name === "inv_color") {
+        isValid = input.value.length >= 1;
+      }
+
+      if (isValid) {
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+      } else {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+      }
+    }
+  });
+</script>

@@ -1,6 +1,10 @@
 <% if (title) { %>
 <h1 class="classification-title"><%= title %></h1>
-<% } else { res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
+<% } else { res.redirect('/') } %> 
+
+<%- messages() %> 
+
+<% if (errors) { %>
 <ul class="notice">
   <% errors.array().forEach(error => { %>
   <li><%= error.msg %></li>
@@ -12,7 +16,7 @@
   <form action="/inv/add-classification" method="post">
     <div class="inv-label">
       <h3><i>Field is required</i></h3>
-      <hr>
+      <hr />
       <label for="classification_name"><h3>Classification Name:</h3></label>
       <p>Name must be alphabetic characters only.</p>
       <input
@@ -28,5 +32,3 @@
     </div>
   </form>
 </div>
-
-

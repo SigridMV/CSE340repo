@@ -404,6 +404,16 @@ input[type="text"]:focus {
   overflow: auto;
 }
 
+
+.valid {
+  background-color: lightgreen;
+}
+
+.invalid {
+  background-color: lightcoral;
+}
+
+
 @media screen and (min-width: 768px) {
   .column {
     display: flex;
@@ -500,5 +510,9 @@ input[type="text"]:focus {
     align-items: center;
     margin-left: 10px;
     margin-bottom: 30px;
+  }
+
+  .vehicle-imagen{
+    width:50%;
   }
 }
