@@ -145,7 +145,7 @@ Util.buildModelGrid = async function (data) {
 Util.getClassifications = async function (req, res, next) {
   let data = await invModel.getClassificationsById();
   let selectList =
-    '<select name="classification_id" id="classification_id" class="classification_id">';
+    '<select name="classification_id" id="select_classification" class="select-classification">';
   selectList +=
     '<option value="" disabled selected>Choose a Classification</option>';
   data.rows.forEach((row) => {
@@ -194,11 +194,11 @@ Util.checkJWTToken = (req, res, next) => {
  * ************************************ */
 Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
-    next()
+    next();
   } else {
-    req.flash("notice", "Please log in.")
-    return res.redirect("/account/login")
+    req.flash("notice", "Please log in.");
+    return res.redirect("/account/login");
   }
- }
+};
 
 module.exports = Util;

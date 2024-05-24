@@ -29,7 +29,7 @@ router.get(
 router.post(
   "/add-classification",
   regValidate.classificationRules(),
-  // regValidate.checkClassificationData,
+  regValidate.checkClassificationData,
   utilities.handleErrors(invController.addNewClassification)
 );
 
@@ -41,7 +41,7 @@ router.get(
 router.post(
   "/add-inventory",
   regValidate.inventoryRules(),
-  // regValidate.checkInventoryData,
+  regValidate.checkInventoryData,
   utilities.handleErrors(invController.addNewInventory)
 );
 
@@ -52,10 +52,14 @@ router.get(
 
 router.get(
   "/edit/:inv_id",
-  // regValidate.checkAccountAccess,
   regValidate.inventoryRules(),
   utilities.handleErrors(invController.editInventoryView)
 )
+
+router.post("/update/", 
+regValidate.inventoryRules(),
+regValidate.checkUpdateData,
+utilities.handleErrors(invController.updateInventory))
 
 
 module.exports = router;

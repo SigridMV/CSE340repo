@@ -91,7 +91,7 @@ validate.inventoryRules = () => {
  * Check data and return errors or continue to add new classification
  * *************************************************************** */
 validate.checkClassificationData = async (req, res, next) => {
-  const { classification_id } = req.body;
+  const { add_classification } = req.body;
   let errors = [];
   errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -100,7 +100,7 @@ validate.checkClassificationData = async (req, res, next) => {
       errors,
       title: "Add Classification",
       nav,
-      classification_id,
+      add_classification,
     });
     return;
   }
@@ -112,7 +112,7 @@ validate.checkClassificationData = async (req, res, next) => {
  * ********************************************************** */
 validate.checkInventoryData = async (req, res, next) => {
   const {
-    classification_id,
+    add_classification,
     inv_make,
     inv_model,
     inv_year,
@@ -134,7 +134,48 @@ validate.checkInventoryData = async (req, res, next) => {
       title: "Add Inventory",
       nav,
       selectList,
-      classification_id,
+      add_classification,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+    });
+    return;
+  }
+  next();
+};
+
+
+validate.checkUpdateData = async (req, res, next) => {
+  const {
+    add_classification,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+  } = req.body;
+
+  let errors = [];
+  errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    let selectList = await utilities.getClassifications();
+    res.render("./inventory/add-inventory", {
+      errors,
+      title: "Add Inventory",
+      nav,
+      selectList,
+      add_classification,
       inv_make,
       inv_model,
       inv_year,
