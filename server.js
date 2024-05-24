@@ -17,6 +17,7 @@ const inventoryRoute = require("./routes/inventoryRoute");
 const utilities = require("./utilities");
 const errorController = require("./controllers/errorController");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -37,14 +38,18 @@ app.use(
 );
 
 // Express Messages Middleware
-app.use(require('connect-flash')())
+app.use(require('connect-flash')());
 app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
-})
+});
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cookieParser());
+
+app.use(utilities.checkJWTToken);
 
 app.set("view engine", "ejs");
 app.use(expressLayouts);
