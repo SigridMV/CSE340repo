@@ -150,7 +150,6 @@ validate.checkInventoryData = async (req, res, next) => {
   next();
 };
 
-
 validate.checkUpdateData = async (req, res, next) => {
   const {
     add_classification,
@@ -189,6 +188,30 @@ validate.checkUpdateData = async (req, res, next) => {
     return;
   }
   next();
+};
+
+validate.checkAccountAccess = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  let errors = [];
+
+  const { classification_id } = req.body;
+  const selectList = await utilities.getClassifications(classification_id);
+  const accountData = res.locals.accountData;
+  errors = validationResult(req);
+  if (
+    accountData.account_type == "Employee" ||
+    accountData.account_type == "Admin"
+  ) {
+    next();
+  } else {
+    res.render("./account/account", {
+      title: "Account Management",
+      nav,
+      errors: null,
+      selectList,
+    });
+    next();
+  }
 };
 
 module.exports = validate;

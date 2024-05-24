@@ -18,7 +18,11 @@ router.get(
 );
 
 // Route to build management view
-router.get("/", utilities.handleErrors(invController.buildManagement));
+router.get(
+  "/",
+  regValidate.checkAccountAccess,
+  utilities.handleErrors(invController.buildManagement)
+);
 
 // Route to build add-classification view
 router.get(
@@ -46,6 +50,12 @@ router.post(
 );
 
 router.get(
+  "/management",
+  regValidate.checkAccountAccess,
+  utilities.handleErrors(invController.buildManagement)
+);
+
+router.get(
   "/getInventory/:classification_id",
   utilities.handleErrors(invController.getInventoryJSON)
 );
@@ -54,12 +64,17 @@ router.get(
   "/edit/:inv_id",
   regValidate.inventoryRules(),
   utilities.handleErrors(invController.editInventoryView)
-)
+);
 
-router.post("/update/", 
-regValidate.inventoryRules(),
-regValidate.checkUpdateData,
-utilities.handleErrors(invController.updateInventory))
+router.post(
+  "/update/",
+  regValidate.inventoryRules(),
+  regValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+);
 
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView));
+
+router.post("/delete", utilities.handleErrors(invController.deleteItem));
 
 module.exports = router;
