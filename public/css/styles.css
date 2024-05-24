@@ -413,6 +413,64 @@ input[type="text"]:focus {
   background-color: lightcoral;
 }
 
+.account-title{
+  padding: 20px;
+}
+
+#tools {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+#tools .account-links {
+  display: flex; 
+  margin-left: 15px;
+}
+
+#tools .account-links a {
+  margin: 0;
+  text-decoration: none; 
+}
+
+.logout{
+margin-left: 5px;
+}
+
+.account-management {
+  margin-bottom: 20px;
+}
+
+.account-welcome{
+  margin: 10px;
+}
+
+.account-management p{
+  margin: 10px;
+}
+
+.edit-account{
+  margin: 10px;
+}
+
+.select-classification{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.management-inventory{
+  margin: 20px;
+}
+
+.management-inventory p{
+  margin: 20px 0 20px 0;
+
+}
+
+.manage-inventory{
+  margin-top: 10px;
+}
+
 
 @media screen and (min-width: 768px) {
   .column {

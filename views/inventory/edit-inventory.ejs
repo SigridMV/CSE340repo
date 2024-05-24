@@ -8,9 +8,9 @@
 </ul>
 <% } %>
 
-<!-- Edit-Inventory Form -->
+<!-- Add-Inventory Form -->
 <div class="form-box new">
-  <form action="/inv/add-inventory" method="post">
+  <form id="updateForm" action="/inv/update" method="post">
     <div>
       <h4><i>ALL FIEDLS ARE REQUIRED</i></h4>
     </div>
@@ -18,7 +18,7 @@
       <label for="classification_id">Classification </label>
       <%- selectList %>
     </div>
-    <br >
+    <br />
     <div class="inv-label">
       <label for="make">Make</label>
       <input
@@ -27,7 +27,7 @@
         type="text"
         placeholder="Min of 3 characters"
         value="<%= locals.inv_make %>"
-      >
+      />
     </div>
     <div class="inv-label">
       <label for="model">Model</label>
@@ -37,7 +37,7 @@
         type="text"
         placeholder="Min of 3 characters"
         value="<%= locals.inv_model %>"
-      >
+      />
     </div>
     <div class="inv-label">
       <label for="description">Description </label>
@@ -47,7 +47,7 @@
         class="large-textarea"
         placeholder=""
       >
-<%= locals.inv_description %></textarea
+  <%= locals.inv_description %></textarea
       >
     </div>
     <div class="inv-label">
@@ -58,7 +58,7 @@
         type="text"
         placeholder="Image"
         value="/images/vehicles/no-image.png"
-      >
+      />
     </div>
     <div class="inv-label">
       <label for="thumbnail">Thumbnail Path</label>
@@ -68,7 +68,7 @@
         type="text"
         placeholder="Thumbnail Image"
         value="/images/vehicles/no-image.png"
-      >
+      />
     </div>
     <div class="inv-label">
       <label for="price">Price</label>
@@ -78,7 +78,7 @@
         type="number"
         placeholder="decimal or integer"
         value="<%= locals.inv_price %>"
-      >
+      />
     </div>
     <div class="inv-label">
       <label for="year">Year</label>
@@ -88,7 +88,7 @@
         type="number"
         placeholder="4-digit year"
         value="<%= locals.inv_year %>"
-      >
+      />
     </div>
     <div class="inv-label">
       <label for="miles">Miles</label>
@@ -98,7 +98,7 @@
         type="number"
         placeholder="digits only"
         value="<%= locals.inv_miles %>"
-      >
+      />
     </div>
     <div class="inv-label">
       <label for="color">Color</label>
@@ -108,10 +108,10 @@
         type="text"
         placeholder=""
         value="<%= locals.inv_color %>"
-      >
+      />
     </div>
-    <br >
-    <button type="submit" class="form-btn">Add Vehicle</button>
+    <br />
+    <button type="submit" class="form-btn">Update Vehicle</button>
   </form>
 </div>
 
@@ -120,7 +120,7 @@
     const form = document.querySelector("form");
     const inputs = form.querySelectorAll("input, textarea");
 
-    inputs.forEach(input => {
+    inputs.forEach((input) => {
       input.addEventListener("input", function () {
         validateInput(input);
       });
@@ -155,3 +155,4 @@
     }
   });
 </script>
+

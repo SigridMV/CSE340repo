@@ -91,7 +91,7 @@ validate.inventoryRules = () => {
  * Check data and return errors or continue to add new classification
  * *************************************************************** */
 validate.checkClassificationData = async (req, res, next) => {
-  const { add_classification } = req.body;
+  const { classification_id } = req.body;
   let errors = [];
   errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -112,7 +112,7 @@ validate.checkClassificationData = async (req, res, next) => {
  * ********************************************************** */
 validate.checkInventoryData = async (req, res, next) => {
   const {
-    add_classification,
+    classification_id,
     inv_make,
     inv_model,
     inv_year,

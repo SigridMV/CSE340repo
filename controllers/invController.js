@@ -36,6 +36,7 @@ invCont.buildByModelId = async function (req, res, next) {
 invCont.buildManagement = async function (req, res, next) {
   try {
     let nav = await utilities.getNav();
+
     const { classification_id } = req.body;
     const selectList = await utilities.getClassifications(classification_id);
     res.render("./inventory/management.ejs", {
@@ -114,11 +115,11 @@ invCont.addNewInventory = async function (req, res, next) {
   const invResult = await invModel.addInventory(
     inv_make,
     inv_model,
-    inv_year,
     inv_description,
     inv_image,
     inv_thumbnail,
     inv_price,
+    inv_year,
     inv_miles,
     inv_color,
     classification_id
@@ -146,5 +147,47 @@ invCont.addNewInventory = async function (req, res, next) {
     });
   }
 };
+
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+  const classification_id = parseInt(req.params.classification_id)
+  const invData = await invModel.getInventoryByClassificationId(classification_id)
+  if (invData[0].inv_id) {
+    return res.json(invData)
+  } else {
+    next(new Error("No data returned"))
+  }
+}
+
+/* ***************************
+ *  Build edit inventory view
+ * ************************** */
+invCont.editInventoryView = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id)
+  let nav = await utilities.getNav()
+  const itemData = await invModel.getModelById(inv_id)
+  const selectList = await utilities.getClassifications(itemData.classification_id)
+  const selectedItemData = itemData[0];
+  const itemName = `${selectedItemData.inv_make} ${selectedItemData.inv_model}`
+  res.render("./inventory/edit-inventory", {
+    title: "Edit " + itemName,
+    nav,
+    selectList: selectList,
+    errors: null,
+    classification_id: selectedItemData.classification_id,
+    inv_id: selectedItemData.inv_id,
+    inv_make: selectedItemData.inv_make,
+    inv_model: selectedItemData.inv_model,
+    inv_description: selectedItemData.inv_description,
+    inv_image: selectedItemData.inv_image,
+    inv_thumbnail: selectedItemData.inv_thumbnail,
+    inv_price: selectedItemData.inv_price,
+    inv_year: selectedItemData.inv_year,
+    inv_miles: selectedItemData.inv_miles,
+    inv_color: selectedItemData.inv_color
+  })
+}
 
 module.exports = invCont;

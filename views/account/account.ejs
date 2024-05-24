@@ -1,0 +1,16 @@
+<% if (title) { %>
+<h1 class="account-title"><%= title %></h1>
+<% } else { res.redirect('/') } %> <%- messages() %>
+
+
+
+<div class="account-management">
+  <h2 class="account-welcome">
+    Welcome <%= locals.accountData.account_firstname %>
+  </h2>
+  <p>You're logged in!</p>
+
+  <br />
+
+  <a class="edit-account" title="Edit Account Information" href="#">Edit Account information</a>
+</div>
