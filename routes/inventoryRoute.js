@@ -27,11 +27,13 @@ router.get(
 // Route to build add-classification view
 router.get(
   "/add-classification",
+  regValidate.checkAccountAccess,
   utilities.handleErrors(invController.buildAddClassification)
 );
 
 router.post(
   "/add-classification",
+  regValidate.checkAccountAccess,
   regValidate.classificationRules(),
   regValidate.checkClassificationData,
   utilities.handleErrors(invController.addNewClassification)
@@ -39,6 +41,7 @@ router.post(
 
 router.get(
   "/add-inventory",
+  regValidate.checkAccountAccess,
   utilities.handleErrors(invController.buildAddInventory)
 );
 
@@ -57,24 +60,26 @@ router.get(
 
 router.get(
   "/getInventory/:classification_id",
+  regValidate.checkAccountAccess,
   utilities.handleErrors(invController.getInventoryJSON)
 );
 
 router.get(
   "/edit/:inv_id",
-  regValidate.inventoryRules(),
+  regValidate.checkAccountAccess,
   utilities.handleErrors(invController.editInventoryView)
 );
 
 router.post(
   "/update/",
+  regValidate.checkAccountAccess,
   regValidate.inventoryRules(),
   regValidate.checkUpdateData,
   utilities.handleErrors(invController.updateInventory)
 );
 
-router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView));
+router.get("/delete/:inv_id", regValidate.checkAccountAccess, utilities.handleErrors(invController.deleteView));
 
-router.post("/delete", utilities.handleErrors(invController.deleteItem));
+router.post("/delete", regValidate.checkAccountAccess, utilities.handleErrors(invController.deleteItem));
 
 module.exports = router;

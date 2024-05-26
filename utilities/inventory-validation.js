@@ -98,7 +98,7 @@ validate.checkClassificationData = async (req, res, next) => {
     let nav = await utilities.getNav();
     res.render("./inventory/add-classification", {
       errors,
-      title: "Add Classification",
+      title: "Add New Classification",
       nav,
       add_classification,
     });
@@ -112,14 +112,13 @@ validate.checkClassificationData = async (req, res, next) => {
  * ********************************************************** */
 validate.checkInventoryData = async (req, res, next) => {
   const {
-    add_classification,
     inv_make,
     inv_model,
-    inv_year,
     inv_description,
     inv_image,
     inv_thumbnail,
     inv_price,
+    inv_year,
     inv_miles,
     inv_color,
   } = req.body;
@@ -134,14 +133,13 @@ validate.checkInventoryData = async (req, res, next) => {
       title: "Add Inventory",
       nav,
       selectList,
-      add_classification,
       inv_make,
       inv_model,
-      inv_year,
       inv_description,
       inv_image,
       inv_thumbnail,
       inv_price,
+      inv_year,
       inv_miles,
       inv_color,
     });
@@ -152,66 +150,67 @@ validate.checkInventoryData = async (req, res, next) => {
 
 validate.checkUpdateData = async (req, res, next) => {
   const {
-    add_classification,
+    inv_id,
     inv_make,
     inv_model,
-    inv_year,
     inv_description,
     inv_image,
     inv_thumbnail,
     inv_price,
+    inv_year,
     inv_miles,
     inv_color,
-  } = req.body;
+    classification_id,
+  } = req.body
 
-  let errors = [];
-  errors = validationResult(req);
+  let errors = []
+  errors = validationResult(req)
   if (!errors.isEmpty()) {
-    let nav = await utilities.getNav();
-    let selectList = await utilities.getClassifications();
-    res.render("./inventory/add-inventory", {
+    let nav = await utilities.getNav()
+    let selectList = await utilities.getClassifications(classification_id)
+    res.render("./inventory/edit-inventory", {
       errors,
-      title: "Add Inventory",
+      title: "Edit Inventory",
       nav,
       selectList,
-      add_classification,
+      inv_id,
       inv_make,
       inv_model,
-      inv_year,
       inv_description,
       inv_image,
       inv_thumbnail,
       inv_price,
+      inv_year,
       inv_miles,
       inv_color,
-    });
-    return;
+      classification_id,
+    })
+    return
   }
-  next();
-};
+  next()
+}
 
 validate.checkAccountAccess = async (req, res, next) => {
-  let nav = await utilities.getNav();
-  let errors = [];
+  let nav = await utilities.getNav()
+  let errors = []
+  
+  const { classification_id } = req.body
+  const selectList = await utilities.getClassifications(classification_id)
+  const accountData = res.locals.accountData
+  errors = validationResult(req)
+  if (accountData.account_type == 'Employee' || accountData.account_type == 'Admin') {
+    next() 
 
-  const { classification_id } = req.body;
-  const selectList = await utilities.getClassifications(classification_id);
-  const accountData = res.locals.accountData;
-  errors = validationResult(req);
-  if (
-    accountData.account_type == "Employee" ||
-    accountData.account_type == "Admin"
-  ) {
-    next();
   } else {
     res.render("./account/account", {
       title: "Account Management",
       nav,
       errors: null,
       selectList,
-    });
-    next();
-  }
-};
+    }) 
+    next()
+  } 
+}
+
 
 module.exports = validate;

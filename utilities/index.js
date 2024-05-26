@@ -27,6 +27,31 @@ Util.getNav = async function (req, res, next) {
   return list;
 };
 
+Util.getClassifications = async function (classification_id) {
+  try {
+    let data = await invModel.getClassificationsById(classification_id);
+    let selectList =
+      '<select name="classification_id" id="select_classification" class="select-classification">';
+    selectList +=
+      '<option value="" disabled selected>Choose a Classification</option>';
+    data.rows.forEach((row) => {
+      selectList +=
+        '<option id="' +
+        row.classification_id +
+        '" value=' +
+        row.classification_id +
+        ">" +
+        row.classification_name +
+        "</option>";
+    });
+    selectList += "</select>";
+    return selectList;
+  } catch (error) {
+    console.error("Error in Util.getClassifications:", error);
+    return ""; // Retornar un valor por defecto o manejar el error de otra manera según sea necesario
+  }
+};
+
 /* **************************************
  * Build the classification view HTML
  * ************************************ */
@@ -140,26 +165,6 @@ Util.buildModelGrid = async function (data) {
   grid += "</div>";
   grid += "</section>";
   return grid;
-};
-
-Util.getClassifications = async function (req, res, next) {
-  let data = await invModel.getClassificationsById();
-  let selectList =
-    '<select name="classification_id" id="select_classification" class="select-classification">';
-  selectList +=
-    '<option value="" disabled selected>Choose a Classification</option>';
-  data.rows.forEach((row) => {
-    selectList +=
-      '<option id="' +
-      row.classification_id +
-      '" value=' +
-      row.classification_id +
-      ">" +
-      row.classification_name +
-      "</option>";
-  });
-  selectList += "</select>";
-  return selectList;
 };
 
 Util.handleErrors = (fn) => (req, res, next) =>
