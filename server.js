@@ -72,6 +72,7 @@ app.use("/account", require("./routes/accountRoute"));
 
 // Route to trigger intentional error
 app.use("/error", router);
+router.get("/error-link", errorController.triggerError);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
