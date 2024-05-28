@@ -9,7 +9,7 @@
 <% } %>
 
 <!-- Register Form -->
-<div class="form-box">
+<div class="form-box edit">
   <form action="/account/update" method="post">
     <div class="fname">
       <label for="firstname">First Name: </label>
@@ -56,12 +56,10 @@
 
     <button type="submit" class="form-btn">Update Account</button>
   </form>
-</div>
 
-<div class="form-box">
   <form action="/account/update/password" method="post">
     <div class="password">
-      <label for="password">Password: </label>
+      <label for="password">New Password: </label>
       <input
         type="password"
         name="account_password"
@@ -69,14 +67,26 @@
         required
         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
       />
-      <p>
+      <input type="checkbox" id="show-password" /> Show Password
+      <p class="password-text">
         Passwords must be at least 12 characters and contain at least 1 number,
         1 capital letter and 1 special character.
       </p>
-      <p>
-        By filling out the field above, your account password will be
-        permanently changed.
-      </p>
+
+      <div class="confirm-password">
+        <label for="confirm_password">Confirm Password: </label>
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          required
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+        />
+        <p class="password-text">
+          By entering your new password above, you'll update your account's
+          login details securely.
+        </p>
+      </div>
     </div>
 
     <input
@@ -88,3 +98,16 @@
     <button type="submit" class="form-btn">Update Password</button>
   </form>
 </div>
+
+<script>
+  document
+.getElementById("show-password")
+.addEventListener("change", function () {
+  var passwordField = document.getElementById("password");
+  if (this.checked) {
+    passwordField.type = "text";
+  } else {
+    passwordField.type = "password";
+  }
+});
+</script>

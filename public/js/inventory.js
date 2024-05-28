@@ -28,19 +28,19 @@ document.addEventListener("DOMContentLoaded", function() {
     let inventoryDisplay = document.getElementById("inventoryDisplay");
     // Set up the table labels
     let dataTable = "<thead>";
-    dataTable += "<tr><th>Vehicle Name</th><td>&nbsp;</td><td>&nbsp;</td></tr>";
+    dataTable += "<tr><th>Vehicle Name</th>";
     dataTable += "</thead>";
     // Set up the table body
     dataTable += "<tbody>";
     // Iterate over all vehicles in the array and put each in a row
     data.forEach(function (element) {
       console.log(element.inv_id + ", " + element.inv_model);
-      dataTable += `<tr><td>${element.inv_make} ${element.inv_model}</td>`;
-      dataTable += `<td><a href='/inv/edit/${element.inv_id}' title='Click to update'>Modify</a></td>`;
-      dataTable += `<td><a href='/inv/delete/${element.inv_id}' title='Click to delete'>/ Delete</a></td></tr>`;
+      dataTable += `<tr><td data-label='Vehicle Name'>${element.inv_make} ${element.inv_model}</td>`;
+      dataTable += `<td><a href='/inv/edit/${element.inv_id}' title='Click to update'>Modify</a> | <a href='/inv/delete/${element.inv_id}' title='Click to delete'>Delete</a></td></tr>`;
     });
     dataTable += "</tbody>";
     // Display the contents in the Inventory Management view
     inventoryDisplay.innerHTML = dataTable;
   }
+  
 });

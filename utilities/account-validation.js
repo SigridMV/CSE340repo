@@ -1,4 +1,5 @@
 const utilities = require(".");
+const accountModel = require('../models/account-model');
 const { body, validationResult } = require("express-validator");
 const validate = {};
 
@@ -139,7 +140,6 @@ validate.accountUpdateRules = () => {
             );
           }
         }
-        // req.flash("notice", `Your account has been updated`)
       }),
   ];
 };

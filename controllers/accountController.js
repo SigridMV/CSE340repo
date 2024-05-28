@@ -161,7 +161,6 @@ async function updateAccount(req, res, next) {
   const accountData = await accountModel.getAccountById(account_id);
 
   if (updateResult) {
-    // req.flash("notice", `Your account has been updated!`)
     res.clearCookie("jwt");
     delete accountData.account_password;
     const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, {
@@ -190,7 +189,7 @@ async function updatePassword(req, res, next) {
   let hashedPassword;
   try {
     // regular password and cost (salt is generated automatically)
-    hashedPassword = await bcrypt.hashSync(account_password, 10);
+    hashedPassword = await bcrypt.hash(account_password, 10);
   } catch (error) {
     req.flash("notice", "Sorry, there was an error updating the password.");
     res.status(500).render("account/editAccount", {
@@ -240,5 +239,5 @@ module.exports = {
   editAccountView,
   updateAccount,
   updatePassword,
-  logoutAccount
+  logoutAccount,
 };

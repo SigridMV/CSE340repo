@@ -139,7 +139,9 @@ nav ul li a {
 
 /* Footer */
 footer {
+  padding-top: 20px;
   padding-bottom: 10px;
+  margin-left: 20px;
 }
 
 #wrapper {
@@ -448,6 +450,9 @@ margin-left: 5px;
 .account-management p{
   margin: 10px;
 }
+.edit-info{
+  margin: 10px;
+}
 
 .edit-account{
   margin: 10px;
@@ -468,14 +473,88 @@ margin-left: 5px;
 }
 
 .manage-inventory{
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+
+}
+
+.manage-inventory th,
+.manage-inventory td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.manage-inventory thead {
+  display: none;
+}
+
+.manage-inventory, .manage-inventory tbody, .manage-inventory tr, .manage-inventory td {
+  display: block;
+  width: 100%;
+}
+
+.manage-inventory tr {
+  margin-bottom: 15px;
+}
+
+.manage-inventory td {
+  text-align: right;
+  padding-left: 50%;
+  position: relative;
+}
+
+.manage-inventory td::before {
+  content: attr(data-label);
+  position: absolute;
+  left: 0;
+  width: 50%;
+  padding-left: 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
+#inventoryDisplay{
   margin-top: 10px;
 }
+
 
 .form-btn[disabled]{
   background-color: #ccc;
   color: #666;
   cursor: not-allowed;
 }
+
+.edit{
+  padding-bottom: 20px;
+  margin-left: 10px;
+}
+
+.password{
+  padding-top: 10px;
+}
+
+.management-inventory{
+  margin-left: 20px;
+}
+
+.select-list option{
+  width: 100%;
+}
+
+nav ul li:hover {
+ background-color: #fff;
+}
+
+nav ul li a:hover {
+  color: #1b1b1b;
+ }
+
+ .name-hover:hover{
+  text-decoration: underline;
+ }
 
 
 @media screen and (min-width: 768px) {
