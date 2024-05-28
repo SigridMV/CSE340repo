@@ -99,7 +99,7 @@ invCont.addNewClassification = async function (req, res, next) {
     const classResult = await invModel.addClassification(add_classification);
     if (classResult) {
       let nav = await utilities.getNav();
-      let selectList = await utilities.getClassifications();
+      let selectList = await utilities.getClassifications(classification_id);
       req.flash(
         "notice",
         `Congratulations, you\'ve created the ${add_classification} classification!`
@@ -107,7 +107,7 @@ invCont.addNewClassification = async function (req, res, next) {
       res.status(201).render("./inventory/management", {
         title: "Vehicle Management",
         nav,
-        selectList: selectList, 
+        selectList,
         errors: null,
       });
     } else {
@@ -118,7 +118,7 @@ invCont.addNewClassification = async function (req, res, next) {
       res.status(501).render("./inventory/add-classification", {
         title: "Add Classification",
         nav,
-        selectList: selectList, 
+        selectList: selectList,
         errors: null,
       });
     }
@@ -156,7 +156,7 @@ invCont.addNewInventory = async function (req, res, next) {
       inv_color,
       classification_id
     );
-
+    let selectList = await utilities.getClassifications(classification_id);
     if (invResult) {
       req.flash(
         "notice",
@@ -165,6 +165,7 @@ invCont.addNewInventory = async function (req, res, next) {
       res.status(201).render("./inventory/management", {
         title: "Vehicle Management",
         nav,
+        selectList,
         errors: null,
       });
     } else {
@@ -175,6 +176,7 @@ invCont.addNewInventory = async function (req, res, next) {
       res.status(501).render("./inventory/add-inventory", {
         title: "Add Inventory",
         nav,
+        selectList,
         errors: null,
       });
     }
@@ -305,23 +307,29 @@ invCont.updateInventory = async function (req, res, next) {
 
 invCont.deleteView = async function (req, res, next) {
   try {
-    const inv_id = parseInt(req.params.inv_id);
+    const model_id = req.params.inv_id;
     let nav = await utilities.getNav();
-    const itemData = await invModel.getModelById(inv_id);
-    const itemName = `${itemData.inv_make} ${itemData.inv_model}`;
+    const itemData = await invModel.getModelById(model_id);
+    const selectedItemData = itemData[0];
+    const itemName = `${selectedItemData.inv_make} ${selectedItemData.inv_model}`;
+
     res.render("./inventory/delete-confirm", {
       title: "Delete " + itemName,
       nav,
       errors: null,
-      inv_id: itemData.inv_id,
-      inv_make: itemData.inv_make,
-      inv_model: itemData.inv_model,
-      inv_price: itemData.inv_price,
-      inv_year: itemData.inv_year,
+      inv_id: selectedItemData.inv_id,
+      inv_make: selectedItemData.inv_make,
+      inv_model: selectedItemData.inv_model,
+      inv_year: selectedItemData.inv_year,
+      inv_price: selectedItemData.inv_price,
     });
   } catch (error) {
     console.error("Error in deleteView function:", error);
-    res.status(500).send("Internal Server Error");
+    req.flash(
+      "notice",
+      "An error occurred while trying to load the delete view."
+    );
+    res.redirect("/inv/");
   }
 };
 
@@ -330,17 +338,24 @@ invCont.deleteItem = async function (req, res, next) {
     let nav = await utilities.getNav();
     const inv_id = parseInt(req.body.inv_id);
 
+    if (isNaN(inv_id)) {
+      req.flash("notice", "Invalid inventory ID.");
+      return res.redirect("/inv/");
+    }
+
     const deleteResult = await invModel.deleteInventoryItem(inv_id);
-    if (deleteResult) {
+    if (deleteResult.rowCount > 0) {
+      
       req.flash("notice", "The deletion was successful.");
       res.redirect("/inv/");
     } else {
       req.flash("notice", "Sorry, the delete failed.");
-      res.redirect("/inv/delete/inv_id");
+      res.redirect(`/inv/delete/${inv_id}`);
     }
   } catch (error) {
     console.error("Error in deleteItem function:", error);
-    res.status(500).send("Internal Server Error");
+    req.flash("notice", "An error occurred while trying to delete the item.");
+    res.redirect("/inv/");
   }
 };
 
