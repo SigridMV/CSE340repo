@@ -20,7 +20,7 @@
         placeholder="First Name"
         required
         value="<%= locals.accountData.account_firstname %>"
-      />
+      >
     </div>
 
     <div class="lname">
@@ -32,7 +32,7 @@
         placeholder="Last Name"
         required
         value="<%= locals.accountData.account_lastname %>"
-      />
+      >
     </div>
 
     <div class="email">
@@ -44,7 +44,7 @@
         placeholder="youremail@email.com"
         required
         value="<%= locals.accountData.account_email %>"
-      />
+      >
     </div>
 
     <input
@@ -52,7 +52,7 @@
       name="account_id"
       id="account_id"
       value="<%= locals.accountData.account_id %>"
-    />
+    >
 
     <button type="submit" class="form-btn">Update Account</button>
   </form>
@@ -66,8 +66,8 @@
         id="password"
         required
         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-      />
-      <input type="checkbox" id="show-password" /> Show Password
+      >
+      <input type="checkbox" id="show-password" > Show Password
       <p class="password-text">
         Passwords must be at least 12 characters and contain at least 1 number,
         1 capital letter and 1 special character.
@@ -81,7 +81,7 @@
           id="confirm_password"
           required
           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-        />
+        >
         <p class="password-text">
           By entering your new password above, you'll update your account's
           login details securely.
@@ -93,7 +93,7 @@
       type="hidden"
       name="account_id"
       value="<%= locals.accountData.account_id %>"
-    />
+    >
 
     <button type="submit" class="form-btn">Update Password</button>
   </form>

@@ -47,7 +47,7 @@ Util.getClassifications = async function (classification_id) {
     return selectList;
   } catch (error) {
     console.error("Error in Util.getClassifications:", error);
-    return ""; // Retornar un valor por defecto o manejar el error de otra manera según sea necesario
+    return "";
   }
 };
 
@@ -64,7 +64,7 @@ Util.buildClassificationGrid = async function (data) {
         grid +=
           '<ul style="list-style-type: none; display: flex; flex-wrap: wrap;">';
       }
-      grid += '<li id="vehicles-cards">';
+      grid += '<li class="vehicles-cards">';
       grid +=
         '<a  href="../../inv/detail/' +
         vehicle.inv_id +
@@ -78,10 +78,10 @@ Util.buildClassificationGrid = async function (data) {
         vehicle.inv_make +
         " " +
         vehicle.inv_model +
-        ' on CSE Motors" /></a>';
+        ' on CSE Motors" ></a>';
 
       grid += '<div class="namePrice">';
-      grid += '<hr id="line" />';
+      grid += '<hr class="line" >';
       grid += "<h2>";
       grid +=
         '<a href="../../inv/detail/' +
@@ -127,7 +127,7 @@ Util.buildModelGrid = async function (data) {
     vehicle.inv_make +
     " " +
     vehicle.inv_model +
-    ' on CSE Motors"/>';
+    ' on CSE Motors">';
   grid += '<div class="detail-cont">';
   grid +=
     "<h2>" + vehicle.inv_make + " " + vehicle.inv_model + " Details" + "</h2>";

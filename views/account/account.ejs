@@ -1,28 +1,30 @@
 <% if (title) { %>
 <h1 class="account-title"><%= title %></h1>
-<% } else { res.redirect('/') } %> <%- messages() %>
+<% }  %> 
+
+<%- messages() %>
 
 <div class="account-management">
+  <div class="account-management-text">
   <h2 class="account-welcome">
     Welcome <%= locals.accountData.account_firstname %>
   </h2>
   <p>You're logged in!</p>
 
-  <br />
+  <br >
 
   <!-- Edit Account Information -->
-  <a class="edit-info" title="Edit Account Information" href="/account/editAccount"
-    >Edit Account Information</a
-  >
-
-  <br />
+  <a class="edit-info" title="Edit Account Information" href="/account/editAccount">Edit Account Information</a>
+</div>
+  <br >
 
   <!-- If logged in AND account type == Employee OR Admin, Let them access inventory management -->
-  <% if(locals.loggedin && locals.accountData.account_type == 'Employee' ||
-  locals.accountData.account_type == 'Admin') { %>
-  <br />
+  <% if (locals.loggedin && (locals.accountData.account_type == 'Employee' || locals.accountData.account_type == 'Admin')) { %>
+  <br >
+  <div class="inventory-management">
   <h3>Inventory Management</h3>
-  <br />
+  <br >
   <a title="Manage Account" href="/inv/">Edit Inventory</a>
   <% } %>
+</div>
 </div>

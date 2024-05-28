@@ -162,7 +162,8 @@ footer {
   width: 100%;
 }
 
-.classification-title, .inventory-title {
+.classification-title,
+.inventory-title {
   padding-top: 20px;
   padding-left: 10px;
 }
@@ -189,7 +190,7 @@ footer {
   align-items: center;
 }
 
-#vehicles-cards {
+.vehicles-cards {
   max-width: 400px;
   border: 1px solid #1b1b1b;
   padding: 20px;
@@ -198,7 +199,7 @@ footer {
   border-radius: 10px;
 }
 
-#vehicles-cards img {
+.vehicles-cards img {
   border-radius: 10px;
 }
 
@@ -247,7 +248,8 @@ footer {
   padding-top: 20px;
 }
 
-#messages, .notice{
+#messages,
+.notice {
   padding-top: 15px;
   padding-bottom: 15px;
   color: red;
@@ -299,9 +301,9 @@ label {
 input[type="email"],
 input[type="password"],
 input[type="text"],
-input[type= "number"],
+input[type="number"],
 textarea,
-.select-classification{
+.select-classification {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -355,39 +357,40 @@ input[type="text"]:focus {
   color: #0056b3;
 }
 
-#show-password{
+#show-password {
   margin-top: 5px;
 }
 
-.password-text{
+.password-text {
   margin-top: 5px;
   padding-left: 10px;
   font-size: 12px;
   margin-bottom: 10px;
 }
 
-.management-title{
+.management-title {
   padding: 20px;
 }
 
 .management {
- margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
-.management a{
+.management a {
   margin-left: 50px;
   display: block;
   margin-bottom: 10px;
 }
 
-.new{
+.new {
   margin-left: 30px;
   border: 1px solid #1b1b1b;
   margin-top: 30px;
   margin-bottom: 50px;
 }
 
-.new hr, h4{
+.new hr,
+h4 {
   margin-bottom: 10px;
 }
 
@@ -395,17 +398,16 @@ input[type="text"]:focus {
   margin-bottom: 10px;
 }
 
-.inv-label{
+.inv-label {
   margin-bottom: 10px;
 }
 
-.large-textarea{
+.large-textarea {
   width: 100%;
   height: 100px;
   resize: none;
   overflow: auto;
 }
-
 
 .valid {
   background-color: lightgreen;
@@ -415,7 +417,7 @@ input[type="text"]:focus {
   background-color: lightcoral;
 }
 
-.account-title{
+.account-title {
   padding: 20px;
 }
 
@@ -426,58 +428,49 @@ input[type="text"]:focus {
 }
 
 #tools .account-links {
-  display: flex; 
+  display: flex;
   margin-left: 15px;
 }
 
 #tools .account-links a {
   margin: 0;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
-.logout{
-margin-left: 5px;
+.logout {
+  margin-left: 5px;
 }
 
 .account-management {
   margin-bottom: 20px;
 }
 
-.account-welcome{
+.account-welcome {
   margin: 10px;
 }
 
-.account-management p{
-  margin: 10px;
-}
-.edit-info{
+.edit-account {
   margin: 10px;
 }
 
-.edit-account{
-  margin: 10px;
-}
-
-.select-classification{
+.select-classification {
   max-width: 400px;
   margin: 0 auto;
 }
 
-.management-inventory{
+.management-inventory {
   margin: 20px;
 }
 
-.management-inventory p{
+.management-inventory p {
   margin: 20px 0 20px 0;
-
 }
 
-.manage-inventory{
+.manage-inventory {
   width: 100%;
   border-collapse: collapse;
   overflow-x: auto;
   display: block;
-
 }
 
 .manage-inventory th,
@@ -491,7 +484,10 @@ margin-left: 5px;
   display: none;
 }
 
-.manage-inventory, .manage-inventory tbody, .manage-inventory tr, .manage-inventory td {
+.manage-inventory,
+.manage-inventory tbody,
+.manage-inventory tr,
+.manage-inventory td {
   display: block;
   width: 100%;
 }
@@ -516,46 +512,48 @@ margin-left: 5px;
   text-align: left;
 }
 
-#inventoryDisplay{
+#inventoryDisplay {
   margin-top: 10px;
 }
 
-
-.form-btn[disabled]{
+.form-btn[disabled] {
   background-color: #ccc;
   color: #666;
   cursor: not-allowed;
 }
 
-.edit{
+.edit {
   padding-bottom: 20px;
   margin-left: 10px;
 }
 
-.password{
+.password {
   padding-top: 10px;
 }
 
-.management-inventory{
-  margin-left: 20px;
-}
-
-.select-list option{
+.select-list option {
   width: 100%;
 }
 
 nav ul li:hover {
- background-color: #fff;
+  background-color: #fff;
 }
 
 nav ul li a:hover {
   color: #1b1b1b;
- }
+}
 
- .name-hover:hover{
+.name-hover:hover {
   text-decoration: underline;
- }
+}
 
+.inventory-management, .account-management-text{
+  margin-left: 20px;
+}
+
+.classification-title{
+  margin-bottom: 10px;
+}
 
 @media screen and (min-width: 768px) {
   .column {
@@ -638,7 +636,7 @@ nav ul li a:hover {
     flex-wrap: wrap;
   }
 
-  #vehicles-cards {
+  .vehicles-cards {
     flex: 0 0 calc(33.33% - 40px);
     border: 1px solid #1b1b1b;
     padding: 20px;
@@ -655,7 +653,7 @@ nav ul li a:hover {
     margin-bottom: 30px;
   }
 
-  .vehicle-imagen{
-    width:50%;
+  .vehicle-imagen {
+    width: 50%;
   }
 }
