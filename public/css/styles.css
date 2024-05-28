@@ -348,7 +348,7 @@ input[type="text"]:focus {
 }
 
 .register a {
-  color: #007bff;
+  color: #004494;
   text-decoration: none;
   transition: color 0.3s ease;
 }
