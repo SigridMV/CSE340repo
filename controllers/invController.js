@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model");
+const rvwModel = require("../models/review-model")
 const utilities = require("../utilities/");
 
 const invCont = {};
@@ -29,8 +30,11 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildByModelId = async function (req, res, next) {
   try {
     const model_id = req.params.inventoryId;
-    const data = await invModel.getModelById(model_id);
-    const grid = await utilities.buildModelGrid(data);
+    const data = await invModel.getModelById(model_id)
+    res.locals.inv_id = model_id
+    const grid = await utilities.buildModelGrid(data)
+    const reviews = await rvwModel.getReviewsBymodel_id(model_id)
+    const reviewDisplay = utilities.buildReviewList(reviews)
     let nav = await utilities.getNav();
     const vehicle =
       data[0].inv_year + " " + data[0].inv_make + " " + data[0].inv_model;
@@ -38,6 +42,7 @@ invCont.buildByModelId = async function (req, res, next) {
       title: vehicle,
       nav,
       grid,
+      reviewDisplay,
     });
   } catch (error) {
     console.error("Error in buildByModelId function:", error);

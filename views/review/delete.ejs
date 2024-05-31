@@ -1,0 +1,21 @@
+<% if (title) {%>
+  <h1 class="delete-title">
+    <%= title %>
+  </h1>
+  <%} else {res.redirect('/')} %>
+  
+  <%- messages() %>
+  
+  <div id="registerContainer">
+    <p class="register-p"><b>Confirm Correct Item! Deletion cannot be undone.</b></p>
+    <form action="/review/delete" method="post">
+      <fieldset>
+        <label class="inv-label">Review Date</label>
+        <input class="inv-input" disabled value="<%= locals.review_date %>" />
+        <label  class="inv-label">Review Text</label>
+        <textarea class="inv-textarea" disabled name="review_text"><%= locals.review_text %></textarea>
+        <input type="hidden" name="review_id" value="<%= locals.review_id %>">
+        <input type="submit" name="submit" class="regbtn" value="Delete">
+      </fieldset>
+    </form>
+  </div>

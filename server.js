@@ -14,6 +14,9 @@ const router = express.Router();
 const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
+const accountRoute = require("./routes/accountRoute");
+const reviewRoute = require("./routes/reviewRoute");
+const errorRoute = require("./routes/errorRoute");
 const utilities = require("./utilities");
 const errorController = require("./controllers/errorController");
 const bodyParser = require("body-parser");
@@ -64,14 +67,16 @@ app.use(static);
 app.get("/", utilities.handleErrors(baseController.buildHome));
 
 // Inventory routes
-
 app.use("/inv", inventoryRoute);
 
-app.use("/account", require("./routes/accountRoute"));
+// Account routes
+app.use("/account", accountRoute);
 
+// Review routes - Review Final Project
+app.use("/review", reviewRoute);
 
 // Route to trigger intentional error
-app.use("/error", require("./routes/errorRoute"));
+app.use("/error", errorRoute);
 
 
 // File Not Found Route - must be last route in list

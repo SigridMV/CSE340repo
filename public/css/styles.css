@@ -423,8 +423,9 @@ h4 {
 
 #tools {
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding-left: 20px;
+  
 }
 
 #tools .account-links {
@@ -435,10 +436,6 @@ h4 {
 #tools .account-links a {
   margin: 0;
   text-decoration: none;
-}
-
-.logout {
-  margin-left: 5px;
 }
 
 .account-management {
@@ -543,8 +540,14 @@ nav ul li a:hover {
   color: #1b1b1b;
 }
 
+.name-hover{
+ font-size: 18px;
+ font-weight: bold;
+}
+
 .name-hover:hover {
   text-decoration: underline;
+  
 }
 
 .inventory-management, .account-management-text{
@@ -554,6 +557,136 @@ nav ul li a:hover {
 .classification-title{
   margin-bottom: 10px;
 }
+
+.review-title{
+  margin: 20px;
+}
+
+.account-management ol li{
+  margin: 20px;
+}
+
+.edit-title{
+  margin: 30px;
+}
+
+#registerContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inv-input, .inv-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.regbtn {
+  padding: 10px 20px;
+  background-color: #004494;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.regbtn:hover {
+  background-color:#0055cc;
+}
+
+.welcome-name{
+  margin-bottom: 20px;
+}
+
+.header-name{
+  padding-right: 10px;
+}
+
+.delete-title{
+  margin: 20px;
+}
+
+#reviews {
+  margin-left: 20px;
+}
+
+.review-h3{
+  margin: 20px;
+}
+
+.styled-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+  display: block;
+}
+
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.form-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+#rvw-display{
+  padding: 20px;
+  margin-left: 20px;
+  
+}
+
+#rvw-display li{
+  margin-bottom: 10px;
+}
+
+.login-warning{
+  margin-left: 20px;
+}
+
 
 @media screen and (min-width: 768px) {
   .column {
@@ -656,4 +789,6 @@ nav ul li a:hover {
   .vehicle-imagen {
     width: 50%;
   }
+
+
 }

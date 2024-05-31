@@ -205,4 +205,44 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+Util.buildReviewList = function(data){
+  let list = '<ul id="rvw-display">'
+  if(data.length > 0){
+    data.forEach(review => { 
+      let reviewDate = new Date(review.review_date)
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      let displayDate = reviewDate.toLocaleDateString('en-US', options)
+      list += `<li>
+      <strong>${review.account_firstname.slice(0,1)}${review.account_lastname}</strong>&nbsp;wrote on ${displayDate}
+      <hr />
+      <div>
+      ${review.review_text}
+      </div>
+      </li>`
+    })
+    list += '</ul>'
+  } else { 
+    list = '<p class="notice">Be the first to write a review.</p>'
+  }
+  return list
+}
+
+Util.buildAccountReviewList = function(reviews){
+  let list = '<ol>'
+  if(reviews.length > 0){
+    reviews.forEach(review => { 
+      let reviewDate = new Date(review.review_date)
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      let displayDate = reviewDate.toLocaleDateString('en-US', options)
+      list += `<li>Reviewed the 
+      ${review.inv_year} ${review.inv_make} ${review.inv_model}&nbsp;on ${displayDate} | <a href="/review/edit/${review.review_id}">Edit</a> | <a href="/review/remove/${review.review_id}">Delete</a>
+      </li>`
+    })
+    list += '</ol>'
+  } else { 
+    list = '<p class="notice">You have not written any reviews.</p>'
+  }
+  return list
+ }
+
 module.exports = Util;

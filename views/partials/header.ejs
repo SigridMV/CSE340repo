@@ -3,13 +3,17 @@
     <a href="/" title="Return to home page"> CSE Motors</a>
   </span>
   <div id="tools">
-
-      <% if (locals.loggedin) { %>
-        <a title="Manage Account" href="/account/">Welcome <span class="name-hover"><%= locals.accountData.account_firstname%></span></a>
-        <br>
-        <a class="logout" title="Logout" href="/account/logout">/ Logout</a>
-      <% } else { %>
-        <a title="Click to log in" href="/account/login">My Account</a> 
-        <% } %>
-    </div>
+    <% if (locals.loggedin) { %>
+    <a class="header-name" title="Manage Account" href="/account/"
+      >Welcome
+      <span class="name-hover"
+        ><%= locals.accountData.account_firstname%></span
+      ></a
+    >
+    <br />
+    <a class="logout" title="Logout" href="/account/logout"> / Logout</a>
+    <% } else { %>
+    <a title="Click to log in" href="/account/login">My Account</a>
+    <% } %>
+  </div>
 </header>
